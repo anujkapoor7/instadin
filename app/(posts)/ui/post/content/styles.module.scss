@@ -1,0 +1,22 @@
+@import "../../../../../utils/styles/mixins.scss";
+@import "../../../../../utils/styles/colors.scss";
+
+.container {
+  background-color: $black-4;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  @include flex(row, initial, center, 1rem);
+
+  .emojiWrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    background-color: $black-3;
+    @include flex();
+  }
+
+  .text {
+    @include font-styles(16px, $white-2, 400, 16px, normal);
+  }
+}

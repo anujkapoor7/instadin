@@ -1,0 +1,19 @@
+@import "../../utils/styles/mixins.scss";
+@import "../../utils/styles/colors.scss";
+
+.container {
+  max-width: 50%;
+  margin: 0 auto;
+
+  .heading {
+    h2 {
+      @include font-styles(28px, $white-1, 500, 34px, normal);
+      margin: 4rem 0 1rem 0;
+    }
+
+    p {
+      @include font-styles(16px, $white-2, 400, 24px, normal);
+      margin-bottom: 2.5rem;
+    }
+  }
+}

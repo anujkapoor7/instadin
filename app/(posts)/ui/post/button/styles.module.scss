@@ -1,0 +1,20 @@
+@import "../../../../../utils/styles/mixins.scss";
+@import "../../../../../utils/styles/colors.scss";
+
+.container {
+  @include font-styles(16px, $white-3, 500, 19px, normal);
+  padding: 0.75rem 2.5rem;
+  background-color: $blue-1;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  border: none;
+  border-radius: 4px;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
