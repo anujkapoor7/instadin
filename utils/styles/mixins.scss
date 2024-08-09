@@ -1,0 +1,75 @@
+@mixin flex(
+  $direction: row,
+  $justify: center,
+  $align: center,
+  $gap: 0,
+  $wrap: "no-wrap"
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+$breakpoints: (
+  "phone": 560px,
+  "tablet": 1025px,
+);
+
+@mixin media-query($device, $type: min) {
+  @if map-has-key($breakpoints, $device) {
+    $width: map-get($breakpoints, $device);
+
+    @if $type == max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin font-styles(
+  $size: false,
+  $color: false,
+  $weight: false,
+  $height: false,
+  $style: false,
+  $spacing: false
+) {
+  @if $size {
+    font-size: $size;
+  }
+
+  @if $color {
+    color: $color;
+  }
+
+  @if $weight {
+    font-weight: $weight;
+  }
+
+  @if $height {
+    line-height: $height;
+  }
+
+  @if $style {
+    font-style: $style;
+  }
+
+  @if $spacing {
+    letter-spacing: $spacing;
+  }
+}
+
+@mixin grid-equal-columns($columns: 2, $gap: 0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+
+  @if $gap {
+    gap: $gap;
+  }
+}

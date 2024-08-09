@@ -1,0 +1,8 @@
+@import "../../utils/styles/mixins.scss";
+@import "../../utils/styles/colors.scss";
+
+body {
+  margin: 0;
+  background-color: $black-1;
+  -webkit-tap-highlight-color: transparent;
+}
