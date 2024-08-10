@@ -17,6 +17,7 @@
   }
 
   .text {
-    @include font-styles(16px, $white-2, 400, 16px, normal);
+    @include font-styles(16px, $white-2, 400, 24px, normal);
+    width: -webkit-fill-available;
   }
 }

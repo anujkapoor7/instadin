@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.flexLeft {
+  @include flex(row, flex-start, center);
+}
+
 .flexRight {
-  @include flex(row, flex-end, center);
+  justify-content: flex-end;
 }

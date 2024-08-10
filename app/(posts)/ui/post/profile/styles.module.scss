@@ -1,0 +1,56 @@
+@import "../../../../../utils/styles/mixins.scss";
+@import "../../../../../utils/styles/colors.scss";
+
+.container {
+  @include flex(row, space-between, center);
+
+  .profileWrapper {
+    @include flex(row, initial, center, 0.75rem);
+
+    .imageWrapper {
+      width: 45px;
+      height: 45px;
+      border-radius: 100%;
+      position: relative;
+
+      img {
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .text {
+      p,
+      h4 {
+        margin: 0;
+      }
+
+      h4 {
+        @include font-styles(16px, $white-1, 500, 19px, normal);
+        margin-bottom: 0.25rem;
+      }
+
+      p {
+        @include font-styles(14px, $white-2, 500, 17px, normal);
+      }
+    }
+  }
+
+  .dotContainer {
+    @include flex(row, initial, center, 0.2rem);
+    cursor: pointer;
+    height: 20px;
+    transition: transform 0.1s ease-in-out;
+
+    .dot {
+      width: 3px;
+      height: 3px;
+      background-color: $white-1;
+      border-radius: 100%;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
