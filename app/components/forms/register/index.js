@@ -8,6 +8,7 @@ import Image from "next/image";
 import Input from "../input";
 import Button from "@/app/components/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // Initial state for the forms
 const initialState = {
