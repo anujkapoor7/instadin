@@ -1,0 +1,71 @@
+@import "../../../utils/styles/mixins.scss";
+@import "../../../utils/styles/colors.scss";
+
+.formWrapper {
+  position: relative;
+  box-sizing: border-box;
+  $border: 3.5px;
+  background: $black-3;
+  background-clip: padding-box;
+  border: solid $border transparent;
+  border-radius: 12px;
+  width: 463px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border;
+    border-radius: inherit;
+    background: linear-gradient(141.38deg, #969696 0.56%, #343434 99.58%);
+    border: 2px solid;
+  }
+
+  h3,
+  h2 {
+    margin: 0;
+    text-align: center;
+  }
+
+  h3 {
+    @include font-styles(14px, $white-4, 500, 17px, normal, 0.03em);
+    margin-top: 1rem;
+  }
+
+  h2 {
+    @include font-styles(18px, $white-3, 600, 18px, normal);
+    margin-top: 0.7rem;
+  }
+
+  .form {
+    margin-top: 3rem;
+
+    .button {
+      width: 100%;
+      margin-top: 1.2rem;
+    }
+  }
+
+  .footer {
+    margin-top: 0.8rem;
+    @include font-styles(14px, $white-2, 500, 17px, normal);
+    margin-bottom: 1rem;
+
+    .link {
+      @include font-styles(14px, $white-1, 500, 17px, normal);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+  }
+}

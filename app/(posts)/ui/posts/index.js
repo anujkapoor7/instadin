@@ -1,6 +1,7 @@
-import React from "react";
 import Post from "../post";
 import { POST_TYPES } from "@/utils/constants";
+
+// Can be fetched from API
 import { postData } from "@/utils/data";
 
 const Posts = () => {

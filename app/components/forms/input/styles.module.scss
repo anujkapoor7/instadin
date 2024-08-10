@@ -1,0 +1,105 @@
+@import "../../../../utils/styles/mixins.scss";
+@import "../../../../utils/styles/colors.scss";
+
+.container {
+  width: 100%;
+
+  .labelWrapper {
+    @include flex(row, space-between, center);
+
+    label {
+      @include font-styles(14px, $white-1, 500, 17px, normal);
+    }
+
+    p {
+      margin: 0;
+      @include font-styles(12px, $white-1, 400, 15px, normal);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+  }
+
+  .inputWrapper {
+    position: relative;
+    margin-top: 0.5rem;
+
+    input {
+      width: -webkit-fill-available;
+      border: 1.5px solid $black-2;
+      height: 43px;
+      border-radius: 4px;
+      background-color: transparent;
+      @include font-styles(16px, $white-3, 400, 19px, normal);
+      padding: 0 1rem;
+      transition: all 0.2s ease;
+      background-color: transparent; // Ensure background color is explicitly set
+
+      &:focus,
+      &:active,
+      &:hover {
+        background-color: transparent; // Keep background consistent during interactions
+        border-color: $white-4;
+        outline: none;
+      }
+
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+        -webkit-text-fill-color: $white-3;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+
+      &:hover {
+        transform: scale(1.01);
+
+        + .icon {
+          transform: translateY(-50%) scale(1.05);
+        }
+      }
+
+      &::-webkit-textfield-decoration-container {
+        display: none;
+      }
+
+      &::-ms-reveal,
+      &::-ms-clear,
+      &::-webkit-clear-button,
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        display: none;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+
+      &:active {
+        transform: translateY(-50%) scale(0.95);
+      }
+    }
+
+    .error {
+      border-color: $red-1;
+
+      &:focus,
+      &:active,
+      &:hover {
+        border-color: $red-1;
+      }
+    }
+  }
+
+  .errorMessage {
+    margin: 0;
+    @include font-styles(10px, $red-1, 400, 12px, normal);
+    margin-top: 0.25rem;
+  }
+}

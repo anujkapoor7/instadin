@@ -1,0 +1,7 @@
+@import "../../../utils/styles/mixins.scss";
+@import "../../../utils/styles/colors.scss";
+
+.container {
+  @include flex(column, center, center, 3rem);
+  height: 100vh;
+}
