@@ -25,20 +25,29 @@
     border: 2px solid;
   }
 
-  h3,
-  h2 {
-    margin: 0;
+  .crossWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    @include flex();
+    background-color: $black-1;
+    border-radius: 100%;
+  }
+
+  .title {
+    @include font-styles(14px, $white-4, 500, 17px, normal, 0.03em);
+    margin-top: 2rem;
     text-align: center;
   }
 
-  h3 {
-    @include font-styles(14px, $white-4, 500, 17px, normal, 0.03em);
-    margin-top: 1rem;
-  }
-
-  h2 {
+  .description {
     @include font-styles(18px, $white-3, 600, 18px, normal);
     margin-top: 0.7rem;
+    text-align: center;
   }
 
   .form {
@@ -57,7 +66,7 @@
 
     .link {
       @include font-styles(14px, $white-1, 500, 17px, normal);
-      text-decoration: none;
+      cursor: pointer;
 
       &:hover {
         text-decoration: underline;

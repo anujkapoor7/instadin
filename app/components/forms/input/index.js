@@ -49,7 +49,7 @@ const Input = (options) => {
           />
         )}
       </div>
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      {error && <div className={styles.errorMessage}>{error}</div>}
     </div>
   );
 };

@@ -47,7 +47,7 @@ function formReducer(state, action) {
   }
 }
 
-const Register = ({ withCloseButton }) => {
+const Register = ({ withCloseButton, handleClose, changeFormType }) => {
   const [state, dispatch] = useReducer(formReducer, initialState);
   const { replace } = useRouter();
 
@@ -66,12 +66,12 @@ const Register = ({ withCloseButton }) => {
       });
     }
 
-    if (state.username.length < 3) {
+    if (state.username.length < 4) {
       valid = false;
       dispatch({
         type: "SET_ERROR",
         field: "username",
-        error: "Username must be at least 3 characters long",
+        error: "Username must be at least 4 characters long",
       });
     }
 
@@ -85,8 +85,11 @@ const Register = ({ withCloseButton }) => {
     }
 
     if (valid) {
-      localStorage.setItem("user", JSON.stringify(state));
-      replace("/login");
+      if (handleClose) {
+        handleClose();
+        return;
+      }
+      replace("/");
     }
   };
 
@@ -98,16 +101,30 @@ const Register = ({ withCloseButton }) => {
     });
   };
 
+  function handleNavigate() {
+    if (changeFormType) {
+      changeFormType();
+      return;
+    }
+    replace("/login");
+  }
+
   return (
     <Section className={styles.formWrapper}>
       {withCloseButton && (
-        <div className={styles.crossWrapper}>
+        <div
+          className={styles.crossWrapper}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClose();
+          }}
+        >
           <Image src={Cross} alt="cross" width={16} height={16} />
         </div>
       )}
 
-      <h3>SIGN UP</h3>
-      <h2>Create an account to continue</h2>
+      <div className={styles.title}>SIGN UP</div>
+      <div className={styles.description}>Create an account to continue</div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input
@@ -144,9 +161,9 @@ const Register = ({ withCloseButton }) => {
 
       <div className={styles.footer}>
         Already have an account?&nbsp;
-        <Link href="/login" className={styles.link}>
+        <span className={styles.link} onClick={handleNavigate}>
           Login -&gt;
-        </Link>
+        </span>
       </div>
     </Section>
   );

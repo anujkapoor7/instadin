@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./styles.module.scss";
 import Section from "../../../components/section";
 import { POST_TYPES } from "@/utils/constants";
@@ -6,6 +8,8 @@ import Button from "../../../components/button";
 import Comments from "./comments";
 import clsx from "clsx";
 import Profile from "./profile";
+import { useState } from "react";
+import Modal from "../modal";
 
 const Post = (post) => {
   const {
@@ -18,10 +22,14 @@ const Post = (post) => {
     edited = false,
     image,
   } = post;
+  const [openLoginModal, setOpenLoginModal] = useState(false);
   const isCreatePost = type === POST_TYPES.CREATE;
 
   return (
-    <Section>
+    <Section
+      handleClick={() => setOpenLoginModal(true)}
+      className={styles.section}
+    >
       {/* Post Header */}
       <div>
         {isCreatePost ? (
@@ -53,6 +61,12 @@ const Post = (post) => {
           )}
         </div>
       </div>
+      {openLoginModal && (
+        <Modal
+          open={openLoginModal}
+          handleClose={() => setOpenLoginModal(false)}
+        />
+      )}
     </Section>
   );
 };

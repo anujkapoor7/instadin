@@ -1,15 +1,19 @@
 @import "../../../../utils/styles/mixins.scss";
 @import "../../../../utils/styles/colors.scss";
 
-.title {
-  @include font-styles(18px, $white-1, 500, 22px, normal);
-  margin: 0;
-}
+.section {
+  cursor: pointer;
 
-.flexLeft {
-  @include flex(row, flex-start, center);
-}
+  .title {
+    @include font-styles(18px, $white-1, 500, 22px, normal);
+    margin: 0;
+  }
 
-.flexRight {
-  justify-content: flex-end;
+  .flexLeft {
+    @include flex(row, flex-start, center);
+  }
+
+  .flexRight {
+    justify-content: flex-end;
+  }
 }
