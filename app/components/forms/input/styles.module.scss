@@ -11,8 +11,7 @@
       @include font-styles(14px, $white-1, 500, 17px, normal);
     }
 
-    p {
-      margin: 0;
+    .forgotPassword {
       @include font-styles(12px, $white-1, 400, 15px, normal);
       transition: transform 0.2s ease;
       cursor: pointer;

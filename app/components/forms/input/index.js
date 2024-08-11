@@ -26,7 +26,9 @@ const Input = (options) => {
     <div className={styles.container} style={style}>
       <div className={styles.labelWrapper}>
         <label>{label}</label>
-        {withForgotPassword && <p>Forgot password?</p>}
+        {withForgotPassword && (
+          <div className={styles.forgotPassword}>Forgot password?</div>
+        )}
       </div>
       <div className={styles.inputWrapper}>
         <input
