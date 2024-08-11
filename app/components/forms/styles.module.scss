@@ -36,6 +36,15 @@
     @include flex();
     background-color: $black-1;
     border-radius: 100%;
+    transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &:hover {
+      background-color: $black-2;
+    }
   }
 
   .title {
