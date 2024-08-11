@@ -4,6 +4,11 @@ import Logo from "@/public/pages/login/logo.svg";
 import Image from "next/image";
 import Register from "@/app/components/forms/register";
 
+export const metadata = {
+  title: "Sign Up",
+  description: "Sign up to Instadin",
+};
+
 export default function Page() {
   return (
     <div className={styles.container}>

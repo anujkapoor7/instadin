@@ -18,9 +18,9 @@ const Input = (options) => {
   } = options;
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const togglePasswordVisibility = () => {
+  function togglePasswordVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
-  };
+  }
 
   return (
     <div className={styles.container} style={style}>

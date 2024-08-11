@@ -7,45 +7,8 @@ import styles from "../styles.module.scss";
 import Image from "next/image";
 import Input from "../input";
 import Button from "@/app/components/button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-// Initial state for the forms
-const initialState = {
-  email: "",
-  username: "",
-  password: "",
-  errors: {
-    email: "",
-    username: "",
-    password: "",
-  },
-};
-
-// Reducer function to manage form state
-function formReducer(state, action) {
-  switch (action.type) {
-    case "SET_FIELD":
-      return {
-        ...state,
-        [action.field]: action.value,
-        errors: {
-          ...state.errors,
-          [action.field]: "",
-        },
-      };
-    case "SET_ERROR":
-      return {
-        ...state,
-        errors: {
-          ...state.errors,
-          [action.field]: action.error,
-        },
-      };
-    default:
-      return state;
-  }
-}
+import { formReducer, initialState } from "./reducer";
 
 const Register = ({ withCloseButton, handleClose, changeFormType }) => {
   const [state, dispatch] = useReducer(formReducer, initialState);
