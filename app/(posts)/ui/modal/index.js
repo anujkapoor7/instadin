@@ -5,7 +5,10 @@ import Register from "@/app/components/forms/register";
 
 const Modal = ({ open, handleClose }) => {
   const [formType, setFormType] = useState("register");
-  if (!open) return null;
+
+  if (!open) {
+    return null;
+  }
 
   return (
     <div className={styles.container}>
