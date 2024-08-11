@@ -45,18 +45,9 @@ function formReducer(state, action) {
   }
 }
 
-const Login = ({ withCloseButton }) => {
+const Login = ({ withCloseButton, handleClose, changeFormType = null }) => {
   const [state, dispatch] = useReducer(formReducer, initialState);
-  const [user, setUser] = useState(null);
   const { replace } = useRouter();
-
-  useEffect(() => {
-    let user = localStorage.getItem("user");
-    user = JSON.parse(user);
-    if (user) {
-      setUser(user);
-    }
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,26 +55,31 @@ const Login = ({ withCloseButton }) => {
     // Basic validation
     let valid = true;
 
-    if (!user || ![user?.email, user?.username].includes(state.email)) {
+    if (!state.email) {
       valid = false;
       dispatch({
         type: "SET_ERROR",
         field: "email",
         error:
-          "User does not exist by this email or username, please create new account",
+          "Email or username is required, please enter your email or username",
       });
     }
 
-    if (user && state.password != user?.password) {
+    if (!state.password) {
       valid = false;
       dispatch({
         type: "SET_ERROR",
         field: "password",
-        error: "Password does not match, please try again",
+        error: "Password is required, please enter your password",
       });
     }
 
     if (valid) {
+      if (handleClose) {
+        handleClose();
+        return;
+      }
+
       replace("/");
     }
   };
@@ -96,18 +92,32 @@ const Login = ({ withCloseButton }) => {
     });
   };
 
+  function handleNavigate() {
+    if (changeFormType) {
+      changeFormType();
+      return;
+    }
+    replace("/register");
+  }
+
   return (
     <Section className={styles.formWrapper}>
       {/* Close button */}
       {withCloseButton && (
-        <div className={styles.crossWrapper}>
+        <div
+          className={styles.crossWrapper}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClose();
+          }}
+        >
           <Image src={Cross} alt="cross" width={16} height={16} />
         </div>
       )}
 
       {/* Headings */}
-      <h3>WELCOME BACK</h3>
-      <h2>Log into your account</h2>
+      <div className={styles.title}>WELCOME BACK</div>
+      <div className={styles.description}>Log into your account</div>
 
       {/* Form */}
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -137,9 +147,9 @@ const Login = ({ withCloseButton }) => {
       {/* Navigation footer */}
       <div className={styles.footer}>
         Note registered yet?&nbsp;
-        <Link href="/register" className={styles.link}>
+        <span className={styles.link} onClick={handleNavigate}>
           Sign up -&gt;
-        </Link>
+        </span>
       </div>
     </Section>
   );
